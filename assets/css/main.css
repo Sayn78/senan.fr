@@ -3687,3 +3687,28 @@ input, select, textarea {
 			}
 
 	}
+
+/* Grille pour les compétences DevOps */
+.skills-columns {
+  display: block;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  column-gap: 2rem;
+  list-style: disc inside;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .skills-columns {
+    columns: 1;
+  }
+}
+
+.align-right-slight {
+  margin-left: 1.5rem;
+}
+
+
+
