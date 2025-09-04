@@ -4108,3 +4108,121 @@ input, select, textarea {
 					}
 
 	}
+
+	/* Fil d’Ariane */
+.breadcrumb {
+  font-size: 0.9em;
+  margin: 1em 0 2em 0;
+  color: #999;
+}
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb span {
+  color: #444;
+  font-weight: bold;
+}
+
+/* Lisibilité renforcée */
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; /* plus gras */
+}
+
+/* Paragraphes */
+p {
+  font-weight: 500; /* un peu plus épais que normal */
+  line-height: 1.6; /* espace pour la lisibilité */
+  color: #ffffff; /* texte un peu plus sombre */
+}
+
+/* Liens dans le menu */
+#header #nav ul li a {
+  font-weight: 600;
+}
+
+/* Boutons */
+.button, .button.primary {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Section Formations Académiques */
+.academic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.academic-list .diplome {
+  font-weight: 700; /* bien gras */
+  color: #ffffff; /* plus sombre pour se démarquer */
+}
+
+.academic-list .description {
+  font-weight: 400; /* normal, plus léger */
+  color: #ffffff; /* un peu plus clair */
+}
+
+/* Alignement des cartes projets */
+#projets .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch; /* force la même hauteur */
+}
+
+#projets .row section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* espace entre texte et bouton */
+}
+
+/* Boutons centrés */
+#projets .actions {
+  margin-top: auto; /* pousse les boutons en bas */
+  display: flex;
+  justify-content: center;
+}
+
+/* Icônes GitHub centrées dans la section projets */
+#projets .icon.major {
+  display: block;
+  margin: 0 auto 1rem auto; /* centre + espace en bas */
+  text-align: center;
+}
+
+/* Header fixe uniquement sur la page d'accueil (landing) */
+body.landing #header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.315);  /* lisible sur la bannière */
+  backdrop-filter: saturate(150%) blur(6px);
+  box-shadow: 0 6px 20px rgba(253, 0, 0, 0.103);
+}
+
+/* Évite que le contenu passe sous le header fixe */
+body.landing #page-wrapper {
+  padding-top: 4.5rem; /* ajuste si ton header est plus grand/petit */
+}
+
+/* Header fixe sur les pages projets (toutes sauf landing) */
+body:not(.landing) #header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.315);  /* même couleur que l'accueil */
+  backdrop-filter: saturate(150%) blur(6px);
+  box-shadow: 0 6px 20px rgba(253, 0, 0, 0.103);
+}
+
+/* Décalage du contenu pour ne pas passer sous le header */
+body:not(.landing) #page-wrapper {
+  padding-top: 4.5rem; /* ajuste selon la hauteur du header */
+}

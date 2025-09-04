@@ -11,19 +11,27 @@
 <body class="is-preload landing">
   <div id="page-wrapper">
 
-    <!-- Header -->
-    <header id="header">
-      <h1 id="logo"><a href="index.html">Anthony Senan</a></h1>
-      <nav id="nav">
-        <ul>
-          <li><a href="#profil">Profil</a></li>
-          <li><a href="#formations">Compétences</a></li>
-          <li><a href="#formations-academiques">Études</a></li>
-          <li><a href="#experiences">Expériences</a></li>
-          <li><a href="#projets">Projets</a></li>
-        </ul>
-      </nav>
-    </header>
+  <!-- Header -->
+  <header id="header">
+    <h1 id="logo"><a href="index.html">Anthony Senan</a></h1>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#profil">Profil</a></li>
+        <li><a href="index.html#formations">Compétences</a></li>
+        <li><a href="index.html#experiences">Expériences</a></li>
+        <!-- Menu déroulant -->
+        <li>
+          <a href="index.html#projets">Projets</a>
+          <ul>
+            <li><a href="travaux.html">Projet 1 – Pipeline CI/CD</a></li>
+            <li><a href="travaux.html">Projet 2 – Cluster Kubernetes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
 
     <!-- Bannière d'accueil -->
     <section id="banner">
@@ -51,14 +59,14 @@
           </div>
           <div class="col-6 col-12-medium">
             <h2>Soft Skills</h2>
-            <ul>
+            <p>
               Capacité d’apprentissage rapide<br />
               Rigueur et sens de l’organisation<br />
               Réactivité et autonomie<br />
               Curiosité technologique<br />
               Esprit d’analyse et de synthèse<br />
               Bonne communication et esprit d’équipe<br />
-            </ul>
+            </p>
           </div>
         </div>
       </div>
@@ -92,13 +100,19 @@
         <div class="container">
           <div class="row aln-middle">
             <div class="col-6 col-12-medium">
+
               <h2>Formations Académiques</h2>
-                <ul>
-                  <strong>Licence Professionnelle Réseaux & Télécoms</strong><br />
-                    Architecture de réseaux sécurisés, Réseaux avancés, Télécoms avancés<br /><br />
-                  <strong>BTS SIO – option SISR</strong><br />
-                    Conception d’infrastructures réseaux, administration systèmes, supervision
-                </ul>
+              <ul class="academic-list">
+                <li>
+                  <span class="diplome">Licence Professionnelle Réseaux & Télécoms</span><br />
+                  <span class="description">Architecture de réseaux sécurisés, Réseaux avancés, Télécoms avancés</span>
+                </li><br />
+                <li>
+                  <span class="diplome">BTS SIO – option SISR</span><br />
+                  <span class="description">Conception d’infrastructures réseaux, administration systèmes, supervision</span>
+                </li>
+              </ul>
+
             </div>
           </div>
         </div>
@@ -140,16 +154,17 @@
               <span class="icon brands alt major fa-github"></span>
               <h3>Projet 1 – Pipeline CI/CD</h3>
               <p>Déploiement d’un site HTML statique via Jenkins, Ansible, Docker et Terraform sur AWS. Analyse de code avec SonarCloud.</p>
-              <ul class="actions" style="justify-content: center; display: flex;">
-                <li><a href="https://github.com/Sayn78/Projet1" class="button primary" target="_blank">Voir sur GitHub</a></li>
+              <ul class="actions">
+                <li><a href="travaux.html" class="button primary">Voir le projet</a></li>
               </ul>
+
             </section>
             <section class="col-6 col-12-medium">
               <span class="icon brands alt major fa-github"></span>
               <h3>Projet 2 - en cours...</h3>
-              <p>Déploiement d'un cluster Kubernetes via Jenkins, Ansible, Docker et terraform sur AWS</p>
-              <ul class="actions" style="justify-content: center; display: flex;">
-                <li><a href="https://github.com/Sayn78/Projet2" class="button primary" target="_blank">Voir sur GitHub</a></li>
+              <p>Déploiement d'un cluster Kubernetes via terraform sur AWS</p>
+              <ul class="actions">
+                <li><a href="travaux.html" class="button primary">Voir le projet</a></li>
               </ul>
             </section>
           </div>
