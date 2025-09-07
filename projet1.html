@@ -1,67 +1,169 @@
 <!DOCTYPE HTML>
 <!-- Page projet basée sur no-sidebar.html (Landed by HTML5 UP) -->
-<html>
+<html lang="fr">
   <head>
-    <title>Projet 1 - Pipeline CI/CD | Anthony Senan</title>
+    <title>Projet 1 – Pipeline CI/CD | Anthony Senan</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <!-- CSS du thème -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <meta name="description" content="Article détaillé : déploiement d'un site HTML statique via Jenkins, SonarCloud, Docker, Ansible & Terraform sur AWS (EC2). CI/CD, IaC, qualité & sécurité." />
+      <style>
+      /* Pré-requis (dropdown) */
+      details.dropdown summary { list-style: none; cursor: pointer; }
+      details.dropdown summary::-webkit-details-marker { display: none; }
+      details.dropdown summary .button { width: 100%; display: inline-block; text-align: left; }
+      details.dropdown .panel { padding-top: 1rem; }
+    </style>
   </head>
   <body class="is-preload">
     <div id="page-wrapper">
 
-    <!-- Header -->
-    <header id="header">
-    <h1 id="logo"><a href="index.html">Anthony Senan</a></h1>
-    <nav id="nav">
-        <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="index.html#profil">Profil</a></li>
-        <li><a href="index.html#formations">Compétences</a></li>
-        <li><a href="index.html#experiences">Expériences</a></li>
-        <!-- Menu déroulant -->
-        <li>
-            <a href="index.html#projets">Projets</a>
-            <ul>
-            <li><a href="projet1.html">Projet 1 - Pipeline CI/CD</a></li>
-            <li><a href="projet2.html">Projet 2 - Cluster Kubernetes</a></li>
-            </ul>
-        </li>
-        </ul>
-    </nav>
-    </header>
-
+      <!-- Header -->
+      <header id="header">
+        <h1 id="logo"><a href="index.html">Anthony Senan</a></h1>
+        <nav id="nav">
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#profil">Profil</a></li>
+            <li><a href="index.html#formations">Compétences</a></li>
+            <li><a href="index.html#experiences">Expériences</a></li>
+            <li>
+              <a href="index.html#projets">Projets</a>
+              <ul>
+                <li><a href="projet1.html">Projet 1 - Pipeline CI/CD</a></li>
+                <li><a href="projet2.html">Projet 2 - Cluster Kubernetes</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
       <!-- Main -->
       <div id="main" class="wrapper style1">
         <div class="container">
+
+          <!-- Hero / Heading -->
           <header class="major">
-            <h2>Projet 1 - Pipeline CI/CD</h2>
-            <p>Déploiement d'un site HTML statique via Jenkins, SonarCloud, Docker, Ansible & Terraform sur AWS.</p>
+            <h2>Projet 1 – Pipeline CI/CD</h2>
+            <p>Déploiement d'un site HTML statique via <strong>Jenkins</strong>, <strong>SonarCloud</strong>, <strong>Docker</strong>, <strong>Ansible</strong> & <strong>Terraform</strong> sur <strong>AWS</strong>.</p>
           </header>
 
-          <!-- Content -->
-          <section id="content">
-            
+          <!-- Badges / Highlights -->
+          <section class="features">
+            <article>
+              <span class="icon solid fa-sync-alt"></span>
+              <div class="content">
+                <h3>CI/CD</h3>
+                <p>Pipeline Jenkins déclenchée à chaque changement de code : build, tests, analyse, déploiement.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon solid fa-cloud"></span>
+              <div class="content">
+                <h3>Cloud AWS</h3>
+                <p>Hébergement sur EC2 avec sécurité réseau (<em>Security Groups</em>) et rôles IAM.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon solid fa-code"></span>
+              <div class="content">
+                <h3>IaC</h3>
+                <p>Infrastructure décrite en code avec Terraform : reproductible, traçable, versionnée.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon solid fa-shield-alt"></span>
+              <div class="content">
+                <h3>Qualité & Sécurité</h3>
+                <p>Analyse continue sous SonarCloud (bugs, vulnérabilités, <em>code smells</em>).</p>
+              </div>
+            </article>
+          </section>
 
+          <!-- Objectif -->
+          <section id="objectif">
             <h3>Objectif</h3>
             <p>
-              Mettre en place une chaîne CI/CD de bout en bout : analyses qualité/sécurité, build d'image Docker,
+              Mettre en place une chaîne <strong>de bout en bout</strong> : analyses qualité/sécurité, build d'image Docker,
               provisionnement de l'infrastructure, puis déploiement automatisé de l'application sur AWS.
             </p>
+          </section>
+          <section id="prerequis">
+            <details class="dropdown">
+              <summary><span class="button primary icon solid fa-list"> Pré‑requis (cliquer pour ouvrir)</span></summary>
+              <div class="panel">
+                <div class="row gtr-150">
+                  <div class="col-6 col-12-medium">
+                    <h4>Outils installés (machine Jenkins / admin)</h4>
+                    <ul>
+                      <li><strong>AWS CLI v2</strong> (configuré via <code>aws configure</code>)</li>
+                      <li><strong>Terraform</strong> ≥ 1.6</li>
+                      <li><strong>Ansible</strong> ≥ 2.15</li>
+                      <li><strong>Docker</strong> (daemon actif, utilisateur dans le groupe <code>docker</code>)</li>
+                      <li><strong>Git</strong></li>
+                    </ul>
+                    <h4>Comptes & accès</h4>
+                    <ul>
+                      <li>Compte <strong>AWS</strong> + clés IAM (droits EC2/VPC/IAM minimaux)</li>
+                      <li>Compte <strong>Docker Hub</strong> (token ou mot de passe)</li>
+                      <li>Organisation <strong>SonarCloud</strong> + token</li>
+                      <li>Dépôt <strong>GitHub</strong> pour le code et l'IaC</li>
+                    </ul>
+                  </div>
+                  <div class="col-6 col-12-medium">
+                    <h4>Jenkins – Plugins & configuration</h4>
+                    <ul>
+                      <li><strong>Git plugin</strong></li>
+                      <li><strong>Pipeline</strong> & <strong>Pipeline: Declarative</strong></li>
+                      <li><strong>Credentials Binding</strong></li>
+                      <li><strong>Docker Pipeline</strong></li>
+                      <li><strong>AnsiColor</strong> (confort)</li>
+                      <li><strong>SonarQube Scanner for Jenkins</strong> (pour SonarCloud)</li>
+                    </ul>
+                    <h4>Jenkins – Credentials (IDs suggérés)</h4>
+                    <ul>
+                      <li><code>DOCKERHUB_CREDENTIALS</code> : utilisateur/token Docker Hub</li>
+                      <li><code>AWS_ACCESS_KEY_ID</code> / <code>AWS_SECRET_ACCESS_KEY</code> (ou profil)</li>
+                      <li><code>SONAR_TOKEN</code> : token SonarCloud</li>
+                    </ul>
+                    <h4>Jenkins – Global config</h4>
+                    <ul>
+                      <li><em>Manage Jenkins → Tools</em> : SonarScanner si utilisé</li>
+                      <li><em>Manage Jenkins → System</em> : « SonarQube servers » → <code>https://sonarcloud.io</code></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </section>
 
+          <hr />
+
+          <!-- Architecture visuelle -->
+          <section id="architecture">
+            <h3>Architecture globale</h3>
+            <figure class="image fit">
+              <img src="images/projets/projet1/architecture.png" alt="Architecture du Projet 1 (CI/CD → AWS EC2)" />
+              <figcaption class="align-center">Chaîne complète : GitHub → Jenkins → SonarCloud → Docker Hub → Terraform/Ansible → EC2</figcaption>
+            </figure>
+          </section>
+
+          <hr />
+
+          <!-- Stack & Outils -->
+          <section id="stack">
             <div class="row gtr-150">
               <div class="col-6 col-12-medium">
                 <h3>Stack & Outils</h3>
                 <ul>
-                  <li>CI/CD : Jenkins</li>
-                  <li>Qualité : SonarCloud</li>
-                  <li>IaC : Terraform</li>
-                  <li>Config Mgmt : Ansible</li>
-                  <li>Containers : Docker</li>
-                  <li>Cloud : AWS (EC2, SG, IAM…)</li>
+                  <li><strong>CI/CD</strong> : Jenkins (pipeline déclarative)</li>
+                  <li><strong>Qualité</strong> : SonarCloud (bugs, vulnérabilités, couverture)</li>
+                  <li><strong>IaC</strong> : Terraform (VPC/SecGroup/EC2/IAM)</li>
+                  <li><strong>Config Mgmt</strong> : Ansible (rôles, idempotence)</li>
+                  <li><strong>Containers</strong> : Docker (build multi-étapes, tags)</li>
+                  <li><strong>Cloud</strong> : AWS (EC2, IAM, Security Groups)</li>
                 </ul>
               </div>
               <div class="col-6 col-12-medium">
@@ -69,44 +171,143 @@
                 <ul>
                   <li>Build & tests automatisés</li>
                   <li>Analyse qualité/sécurité continue</li>
-                  <li>Build & push image Docker</li>
-                  <li>Provisioning infra avec Terraform</li>
-                  <li>Déploiement via Ansible</li>
-                  <li>Rollback simplifié</li>
+                  <li>Build & <em>push</em> image Docker vers Docker Hub</li>
+                  <li>Provisioning infra AWS avec Terraform</li>
+                  <li>Déploiement applicatif via Ansible</li>
+                  <li>Rollbacks simplifiés via tags d'images</li>
                 </ul>
               </div>
             </div>
+          </section>
 
-            <hr />
+          <hr />
 
-            <h3>Architecture</h3>
-            <a class="image fit"><img src="images/projets/projet1/architecture.png" alt="Architecture Projet 1" /></a>
+          <!-- Section Terraform -->
+          <section id="terraform">
+            <h3>1) Provisionnement AWS avec Terraform</h3>
+            <p>
+              L'infrastructure est décrite en HCL et versionnée sur GitHub. Un <code>terraform apply</code> crée une instance
+              <strong>EC2</strong>, configure les <strong>Security Groups</strong> (HTTP/HTTPS/SSH) et applique les rôles <strong>IAM</strong> nécessaires.
+            </p>
+            <figure class="image fit">
+              <img src="images/projets/projet1/screen-01.png" alt="Exécution Terraform : plan & apply" />
+              <figcaption class="align-center">Exécution de <code>terraform plan</code> puis <code>apply</code> pour créer l'infrastructure.</figcaption>
+            </figure>
+            <div class="box">
+              <h4>Pourquoi Terraform ?</h4>
+              <ul>
+                <li>Reproductibilité : même code, même infra.</li>
+                <li>Traçabilité : changements audités via Git.</li>
+                <li>Automatisation : intégré dans la pipeline Jenkins.</li>
+              </ul>
+            </div>
+          </section>
 
-            <hr />
+          <hr />
 
-            <hr />
+          <!-- Section Docker Hub -->
+          <section id="docker">
+            <h3>2) Docker : build & publication sur Docker Hub</h3>
+            <p>
+              L'application statique est packagée dans une image Docker. La pipeline <strong>build</strong> l'image, la <strong>tag</strong>
+              (ex. <code>:latest</code> et <code>:${BUILD_NUMBER}</code>) puis la <strong>pousse</strong> sur Docker Hub.
+            </p>
+            <figure class="image fit">
+              <img src="images/projets/projet1/screen-03.png" alt="Dépôt Docker Hub du projet" />
+              <figcaption class="align-center">Dépôt Docker Hub contenant les images du site, prêtes à être déployées.</figcaption>
+            </figure>
+          </section>
 
-            <h3>Terraform</h3>
-            <a class="image fit"><img src="images/projets/projet1/screen-01.png" alt="Architecture Projet 1" /></a>
-            <hr />
+          <hr />
 
-            <h3>Docker Hub</h3>
-            <a class="image fit"><img src="images/projets/projet1/screen-03.png" alt="Architecture Projet 1" /></a>
-            <hr />
+          <!-- Section Jenkins -->
+          <section id="jenkins">
+            <h3>3) Pipeline CI/CD Jenkins</h3>
+            <p>
+              La pipeline est <strong>déclenchée à chaque commit</strong> sur la branche principale. Elle orchestre les étapes :
+            </p>
+            <div class="box">
+              <ol>
+                <li><strong>Checkout</strong> du code (GitHub)</li>
+                <li><strong>Quality Gate</strong> : analyse SonarCloud</li>
+                <li><strong>Build</strong> de l'image Docker</li>
+                <li><strong>Push</strong> de l'image vers Docker Hub</li>
+                <li><strong>Infra</strong> : <code>terraform init/plan/apply</code></li>
+                <li><strong>Déploiement</strong> : exécution des <em>playbooks</em> Ansible</li>
+              </ol>
+            </div>
+            <figure class="image fit">
+              <img src="images/projets/projet1/screen-01.png" alt="Exécution de la pipeline Jenkins" />
+              <figcaption class="align-center">Pipeline Jenkins avec toutes les étapes automatisées.</figcaption>
+            </figure>
+          </section>
 
-            <h3>Pipeline CI/CD Jenkins</h3>
-            <a class="image fit"><img src="images/projets/projet1/screen-01.png" alt="Architecture Projet 1" /></a>
-            <hr />
+          <hr />
 
-            <h3>SonarCloud</h3>
-            <a class="image fit"><img src="images/projets/projet1/screen-02.png" alt="Architecture Projet 1" /></a>
-            <hr />
+          <!-- Section SonarCloud -->
+          <section id="sonarcloud">
+            <h3>4) SonarCloud : qualité & sécurité</h3>
+            <p>
+              À chaque build, un scan SonarCloud détecte <strong>bugs</strong>, <strong>vulnérabilités</strong> et <strong>code smells</strong>. Le tableau de
+              bord permet d'identifier rapidement les points à corriger.
+            </p>
+            <figure class="image fit">
+              <img src="images/projets/projet1/screen-02.png" alt="Tableau de bord SonarCloud" />
+              <figcaption class="align-center">Tableau de bord SonarCloud du projet (qualité & sécurité).</figcaption>
+            </figure>
+          </section>
 
+          <hr />
 
-            <ul class="actions special">
-              <li><a href="https://github.com/Sayn78/Projet1" class="button primary">Voir le repository</a></li>
+          <!-- Section Ansible -->
+          <section id="ansible">
+            <h3>5) Ansible : configuration & déploiement</h3>
+            <p>
+              Une fois l'EC2 en place, <strong>Ansible</strong> installe les dépendances manquantes (Docker, paquets système, etc.)
+              et déploie l'application en <strong>conteneur</strong>. Les <em>playbooks</em> sont idempotents pour des relances sûres.
+            </p>
+            <div class="box">
+              <h4>Exemples de tâches</h4>
+              <ul>
+                <li>Installation de Docker et activation du service</li>
+                <li>Récupération de la dernière image depuis Docker Hub</li>
+                <li>Lancement (ou redémarrage) du conteneur applicatif</li>
+              </ul>
+            </div>
+          </section>
+
+          <hr />
+
+          <!-- Section Résultat -->
+          <section id="resultat">
+            <h3>Résultat : site déployé sur AWS</h3>
+            <p>
+              Au final, le site HTML statique est accessible depuis l'instance EC2. Chaque modification poussée sur GitHub
+              déclenche une nouvelle livraison automatisée (<strong>CI/CD</strong> complet).
+            </p>
+            <figure class="image fit">
+              <img src="images/projets/projet1/architecture.png" alt="Résultat final – site déployé" />
+              <figcaption class="align-center">Livraison continue en action : un simple commit met à jour le site en production.</figcaption>
+            </figure>
+          </section>
+
+          <hr />
+
+          <!-- Section Leçons apprises -->
+          <section id="lecons">
+            <h3>Leçons & bonnes pratiques</h3>
+            <ul>
+              <li>Versionner l'infra (IaC) pour éliminer la dérive de configuration.</li>
+              <li>Scanner la qualité/sécurité à chaque build pour éviter la dette technique.</li>
+              <li>Taguer les images Docker (ex. <code>latest</code> + <code>build</code>) pour des rollbacks immédiats.</li>
+              <li>Automatiser de bout en bout (du code à la prod) pour réduire le <em>lead time</em>.</li>
             </ul>
           </section>
+
+          <ul class="actions special">
+            <li><a href="https://github.com/Sayn78/Projet1" class="button primary" target="_blank" rel="noopener">Voir le repository</a></li>
+          </ul>
+
         </div>
       </div>
 

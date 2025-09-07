@@ -4226,3 +4226,15 @@ body:not(.landing) #header {
 body:not(.landing) #page-wrapper {
   padding-top: 4.5rem; /* ajuste selon la hauteur du header */
 }
+
+/* Supprime l'overlay / le fond autour des images du thème */
+.image, figure.image, .image.fit, .image.fit img {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+.image:before, .image:after,
+figure.image:before, figure.image:after {
+  display: none !important;
+  background: none !important;
+}
