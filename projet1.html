@@ -498,15 +498,18 @@
           <hr />
 
           <!-- Section Docker Hub -->
-          <section id="docker">
-            <h3>2) Docker : build & publication sur Docker Hub</h3>
-            <p>
-              L'application statique est packagée dans une image Docker. La pipeline <strong>build</strong> l'image, la <strong>tag</strong>
-              (ex. <code>:latest</code> et <code>:${BUILD_NUMBER}</code>) puis la <strong>pousse</strong> sur Docker Hub.
-            </p>
-            <figure class="image fit">
+          <section id="docker" class="media-block">
+            <div class="media-text">
+              <h3>2) Docker : build & publication sur Docker Hub</h3>
+              <p>
+                L'application statique est packagée dans une image Docker. La pipeline <strong>build</strong> l'image, la <strong>tag</strong>
+                (ex. <code>:latest</code> et <code>:${BUILD_NUMBER}</code>) puis la <strong>pousse</strong> sur Docker Hub.
+              </p>
+              <p class="muted">Dépôt Docker Hub contenant les images du site, prêtes à être déployées.</p>
+            </div>
+
+            <figure class="media-figure">
               <img src="images/projets/projet1/screen-03.png" alt="Dépôt Docker Hub du projet" />
-              <figcaption class="align-center">Dépôt Docker Hub contenant les images du site, prêtes à être déployées.</figcaption>
             </figure>
           </section>
 
@@ -536,16 +539,20 @@
 
           <hr />
 
+
           <!-- Section SonarCloud -->
-          <section id="sonarcloud">
-            <h3>4) SonarCloud : qualité & sécurité</h3>
-            <p>
-              À chaque build, un scan SonarCloud détecte <strong>bugs</strong>, <strong>vulnérabilités</strong> et <strong>code smells</strong>. Le tableau de
-              bord permet d'identifier rapidement les points à corriger.
-            </p>
-            <figure class="image fit">
+          <section id="sonarcloud" class="media-block media-reverse">
+            <div class="media-text">
+              <h3>4) SonarCloud : qualité & sécurité</h3>
+              <p>
+                À chaque build, un scan SonarCloud détecte <strong>bugs</strong>, <strong>vulnérabilités</strong> et <strong>code smells</strong>. Le tableau de
+                bord permet d'identifier rapidement les points à corriger.
+              </p>
+              <p class="muted">Tableau de bord SonarCloud du projet (qualité &amp; sécurité).</p>
+            </div>
+
+            <figure class="media-figure">
               <img src="images/projets/projet1/screen-02.png" alt="Tableau de bord SonarCloud" />
-              <figcaption class="align-center">Tableau de bord SonarCloud du projet (qualité & sécurité).</figcaption>
             </figure>
           </section>
 
@@ -577,11 +584,17 @@
               Au final, le site HTML statique est accessible depuis l'instance EC2. Chaque modification poussée sur GitHub
               déclenche une nouvelle livraison automatisée (<strong>CI/CD</strong> complet).
             </p>
-            <figure class="image fit">
-              <img src="images/projets/projet1/architecture.png" alt="Résultat final – site déployé" />
-              <figcaption class="align-center">Livraison continue en action : un simple commit met à jour le site en production.</figcaption>
-            </figure>
+
+            <ul class="actions special">
+              <li>
+                <a href="http://35.180.12.90/" target="_blank" rel="noopener" class="button primary">
+                  Voir le site en ligne
+                </a>
+              </li>
+            </ul>
           </section>
+
+
 
           <hr />
 
