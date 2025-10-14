@@ -4346,3 +4346,59 @@ figure.image:before, figure.image:after {
     max-width: 100%;
   }
 }
+
+
+/* Conteneur général du footer */
+.footer-container {
+  display: flex;
+  justify-content: center;       /* centre le bloc icônes */
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* Garde les icônes centrées */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.doc-footer-button {
+  position: absolute;
+  right: 30px;
+  background-color: #2c2c2c;   /* couleur harmonisée avec le footer */
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+  border: 1px solid #555;      /* fine bordure pour le faire ressortir légèrement */
+}
+
+.doc-footer-button:hover {
+  background-color: #3a3a3a;   /* gris légèrement plus clair au survol */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transform: translateY(-2px);
+}
+
+
+/* Responsive — placer le bouton sous les icônes sur mobile */
+@media screen and (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    position: static;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .doc-footer-button {
+    position: static;
+    margin-top: 10px;
+  }
+}
+
