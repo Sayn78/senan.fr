@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<!-- Page Title -->
+	<title>Déploiement Penpot - Funky Wombat Studio | Présentation DevOps</title>
+
+	<!-- Compressed Styles -->
+	<link href="css/slides.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Custom Styles -->
+	<style>
+		:root {
+			--primary-color: #00d9ff;
+			--secondary-color: #ff006e;
+			--accent-color: #ffbe0b;
+		}
+
+		/* Custom color scheme */
+		.slide.fade-6.kenBurns {
+			background: linear-gradient(135deg, #0a0e27 0%, #1e2761 100%);
+		}
+
+		.button.green.gradient {
+			background: linear-gradient(135deg, var(--primary-color), var(--accent-color)) !important;
+		}
+
+		.button.blue.gradient {
+			background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+		}
+
+		.highlight-primary {
+			color: var(--primary-color);
+			font-weight: 700;
+		}
+
+		.highlight-secondary {
+			color: var(--secondary-color);
+			font-weight: 700;
+		}
+
+		.highlight-accent {
+			color: var(--accent-color);
+			font-weight: 700;
+		}
+
+		/* Custom cards */
+		.tech-card {
+			background: rgba(21, 27, 61, 0.8);
+			padding: 2em;
+			border-radius: 16px;
+			margin: 1em 0;
+			border: 1px solid rgba(0, 217, 255, 0.2);
+			backdrop-filter: blur(10px);
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+			transition: all 0.3s ease;
+		}
+
+		.tech-card:hover {
+			border-color: var(--primary-color);
+			box-shadow: 0 12px 48px rgba(0, 217, 255, 0.2);
+			transform: translateY(-4px);
+		}
+
+		/* Custom badges */
+		.tech-badge {
+			display: inline-block;
+			padding: 0.5em 1.2em;
+			background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+			color: white;
+			border-radius: 25px;
+			font-weight: 700;
+			margin: 0.3em;
+			font-size: 0.9em;
+			box-shadow: 0 4px 12px rgba(0, 217, 255, 0.3);
+		}
+
+		/* Score table */
+		.score-table {
+			width: 100%;
+			margin: 2em 0;
+			border-collapse: separate;
+			border-spacing: 0;
+		}
+
+		.score-table th {
+			background: rgba(0, 217, 255, 0.1);
+			color: var(--primary-color);
+			padding: 1em;
+			font-weight: 700;
+			border-bottom: 2px solid var(--primary-color);
+		}
+
+		.score-table td {
+			padding: 0.8em;
+			border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+		}
+
+		.score-table tr:hover {
+			background: rgba(0, 217, 255, 0.05);
+		}
+
+		.score-total {
+			background: rgba(0, 217, 255, 0.2) !important;
+			font-weight: 900;
+			font-size: 1.2em;
+		}
+	</style>
+
+	<!-- jQuery 3.3.1 -->
+	<script src="js/jquery.min.js"></script>
+
+	<!-- Compressed Scripts -->
+	<script src="js/slides.min.js" type="text/javascript"></script>
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+ 
+</head>
+<body class="slides horizontal simplifiedMobile animated">
+		
+<!-- SVG Library -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  
+  <symbol id="logo" viewBox="0 0 106 31"><title>Slides Framework</title><path d="M17.413 14.04c-.56-5.84-5.6-7-8.52-7-4.6 0-8.6 2.92-8.6 7.52 0 3 2.4 4.88 5.28 5.8 4.24 1.64 5.88 1.84 5.88 3.36 0 1.08-1.2 1.72-2.32 1.72-.28 0-2.24 0-2.52-2.04h-6.6c.6 5.84 5.68 7.36 9.04 7.36 4.92 0 9.04-2.88 9.04-7.76 0-4.8-4-5.92-7.76-6.96-1.76-.52-3.4-1.2-3.4-2.2 0-.6.48-1.48 1.88-1.48 1.96 0 2.04 1.2 2.08 1.68h6.52zm2.222 15.96h6.64v-29.6h-6.64v29.6zm9.662-24.56h6.64v-5.04h-6.64v5.04zm0 24.56h6.64v-22.2h-6.64v22.2zm32.782-29.6h-6.64v9.28c-.72-.72-2.6-2.64-6.52-2.64-5.64 0-11 4.28-11 11.8 0 6.68 4.4 11.88 11.12 11.88 4.48 0 6.08-2.2 6.72-3.12v2.4h6.32v-29.6zm-17.52 18.4c0-2.56 1.8-5.56 5.64-5.56 1.56 0 2.96.56 3.96 1.56 1 .96 1.64 2.32 1.64 3.92.08 1.64-.52 3.08-1.56 4.12s-2.52 1.68-4.12 1.68c-3.12 0-5.56-2.28-5.56-5.68v-.04zm42.502 2.4c.52-4.08-.32-7.64-3.12-10.64-2.08-2.2-5-3.52-8.4-3.52-6.76 0-11.64 5.72-11.64 11.92 0 6.6 5.4 11.76 11.76 11.76 2.28 0 4.48-.68 6.32-2 1.88-1.28 3.44-3.2 4.52-5.68h-6.8c-.8 1.16-1.92 2.08-4.04 2.08-2.6 0-4.84-1.56-5.12-3.92h16.52zm-16.44-5.04c.16-1.04 1.52-3.52 4.96-3.52s4.8 2.48 4.96 3.52h-9.92zm34.502-2.12c-.56-5.84-5.6-7-8.52-7-4.6 0-8.6 2.92-8.6 7.52 0 3 2.4 4.88 5.28 5.8 4.24 1.64 5.88 1.84 5.88 3.36 0 1.08-1.2 1.72-2.32 1.72-.28 0-2.24 0-2.52-2.04h-6.6c.6 5.84 5.68 7.36 9.04 7.36 4.92 0 9.04-2.88 9.04-7.76 0-4.8-4-5.92-7.76-6.96-1.76-.52-3.4-1.2-3.4-2.2 0-.6.48-1.48 1.88-1.48 1.96 0 2.04 1.2 2.08 1.68h6.52z"/></symbol>
+
+  <symbol id="arrow-left" viewBox="0 0 29 56"><path d="M28.7.3c.4.4.4 1 0 1.4l-26.3 26.3 26.3 26.3c.4.4.4 1 0 1.4-.4.4-1 .4-1.4 0l-27-27c-.4-.4-.4-1 0-1.4l27-27c.3-.3 1-.4 1.4 0z"/></symbol>
+  
+  <symbol id="arrow-right" viewBox="0 0 29 56"><path d="M.3 55.7c-.4-.4-.4-1 0-1.4l26.3-26.3-26.3-26.3c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l27 27c.4.4.4 1 0 1.4l-27 27c-.3.3-1 .4-1.4 0z"/></symbol>
+
+  <symbol id="share" viewBox="0 0 18 18"><path d="M16 8c-.6 0-1 .4-1 1v6h-12v-6c0-.6-.4-1-1-1s-1 .4-1 1v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-.6-.4-1-1-1zm-2.3-2.3c.4-.4.4-1 0-1.4l-4-4c-.4-.4-1-.4-1.4 0l-4 4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l2.3-2.3v7.6c0 .6.4 1 1 1s1-.4 1-1v-7.6l2.3 2.3c.4.4 1 .4 1.4 0z"/></symbol>
+
+  <symbol id="arrow-down" viewBox="0 0 24 24"><path d="M12 18c-.2 0-.5-.1-.7-.3l-11-10c-.4-.4-.4-1-.1-1.4.4-.4 1-.4 1.4-.1l10.4 9.4 10.3-9.4c.4-.4 1-.3 1.4.1.4.4.3 1-.1 1.4l-11 10c-.1.2-.4.3-.6.3z"/></symbol>
+
+  <symbol id="facebook" viewBox="0 0 24 24"><path d="M24 1.3v21.3c0 .7-.6 1.3-1.3 1.3h-6.1v-9.3h3.1l.5-3.6h-3.6v-2.2c0-1.1.3-1.8 1.8-1.8h1.9v-3.2c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.7h-3.1v3.6h3.1v9.2h-11.5c-.7 0-1.3-.6-1.3-1.3v-21.4c0-.7.6-1.3 1.3-1.3h21.3c.8 0 1.4.6 1.4 1.3z"/></symbol>
+
+  <symbol id="linkedin" viewBox="0 0 24 24"><path d="M5.9 21.9h-4.7v-14.2h4.7v14.2zm-2.3-16.1c-1.6 0-2.6-1.1-2.6-2.5s1-2.5 2.7-2.5c1.6 0 2.6 1 2.6 2.5-.1 1.4-1.2 2.5-2.7 2.5zm19.2 16.1h-4.7v-7.6c0-2-.7-3.3-2.3-3.3-1.3 0-2.1.9-2.5 1.7-.1.3-.1.8-.1 1.2v7.9h-4.7v-14.1h4.7v2c.7-.9 1.7-2.3 4.3-2.3 3.1 0 5.5 2.1 5.5 6.4v8.2h-.2z"/></symbol>
+
+  <symbol id="twitter" viewBox="0 0 24 24"><path d="M21.5 7.6v.6c0 6.6-5 14.1-14 14.1-2.8 0-5.4-.8-7.6-2.2l1.2.1c2.3 0 4.4-.8 6.1-2.1-2.2 0-4-1.5-4.6-3.4.3.1.6.1.9.1.4 0 .9-.1 1.3-.2-2.1-.6-3.8-2.5-3.8-5 .7.4 1.4.6 2.2.6-1.3-.9-2.2-2.4-2.2-4.1 0-.9.2-1.8.7-2.5 2.4 3 6.1 5 10.2 5.2-.1-.4-.1-.7-.1-1.1 0-2.7 2.1-4.9 4.8-4.9 1.4 0 2.6.6 3.5 1.5 1.1-.2 2.1-.6 3-1.2-.4 1.1-1.1 2.1-2.1 2.7 1-.1 1.9-.4 2.8-.8-.6.9-1.5 1.7-2.4 2.4z"/></symbol>
+
+</svg>
+
+		
+<!-- SLIDE 1: Titre -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <div class="fix-12-12 toCenter">
+          <h1 class="ae-1 fromLeft" style="font-size: 4em; margin-bottom: 0.2em;">
+            Déploiement DevOps
+          </h1>
+          <h2 class="ae-2 fromRight" style="color: var(--accent-color); font-size: 2.5em; font-weight: 700;">
+            Penpot
+          </h2>
+          <p class="ae-3 fromBottom hero" style="margin-top: 1.5em; font-size: 1.5em;">
+            Solution Open Source de Design Collaboratif
+          </p>
+          <p class="ae-4 fromBottom" style="color: var(--secondary-color); font-size: 2em; font-weight: 700; margin-top: 1em;">
+            🦘 Funky Wombat Studio
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1e2761 50%, #2d3561 100%);"></div>
+</section>
+
+<!-- SLIDE 2: Contexte Client -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🎯 Contexte Client</h2>
+        
+        <div class="fix-6-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">Qui ?</h3>
+            <p><strong>Funky Wombat Studio</strong></p>
+            <ul>
+              <li>Agence de design indépendante</li>
+              <li>10 designers & développeurs</li>
+              <li>Projets UX/UI, branding, prototypage</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-3 fromRight">
+          <div class="tech-card">
+            <h3 class="highlight-secondary">Pourquoi ?</h3>
+            <ul>
+              <li>✓ Dépendance à Figma (SaaS US)</li>
+              <li>✓ Contraintes budgétaires</li>
+              <li>✓ Besoin de souveraineté</li>
+              <li>✓ Auto-hébergement requis</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-4 fromBottom margin-top-3">
+          <div class="tech-card" style="background: rgba(255, 190, 11, 0.1); border-color: var(--accent-color);">
+            <p class="center" style="font-size: 1.3em; margin: 0;">
+              <strong>Solution :</strong> Penpot - Alternative open source, auto-hébergée et collaborative
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 3: Enjeux Business -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">💼 Enjeux Business Critiques</h2>
+        
+        <div class="fix-4-12 ae-2 fromLeft">
+          <div class="tech-card center">
+            <h3 style="font-size: 4em;">⚡</h3>
+            <h4>Performance</h4>
+            <p>Équivalente à un SaaS</p>
+          </div>
+        </div>
+
+        <div class="fix-4-12 ae-3">
+          <div class="tech-card center">
+            <h3 style="font-size: 4em;">🔒</h3>
+            <h4>Sécurité</h4>
+            <p>Confidentialité des prototypes</p>
+          </div>
+        </div>
+
+        <div class="fix-4-12 ae-4 fromRight">
+          <div class="tech-card center">
+            <h3 style="font-size: 4em;">⏱️</h3>
+            <h4>Disponibilité</h4>
+            <p>24/7 sans interruption</p>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-5 fromBottom margin-top-3">
+          <div class="tech-card" style="background: rgba(255, 0, 110, 0.1); border-color: var(--secondary-color);">
+            <p class="center" style="font-size: 1.2em; margin: 0;">
+              <strong>Impact :</strong> Chaque minute de latence ou panne = 
+              <span class="highlight-secondary">perte de productivité</span> + 
+              <span class="highlight-secondary">retard client</span> + 
+              <span class="highlight-secondary">perte de crédibilité</span>
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 4: Objectifs -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🎯 Objectifs du Projet</h2>
+        
+        <div class="fix-6-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">Production</h3>
+            <ul>
+              <li>✓ Instance stable 24/7</li>
+              <li>✓ Accès distant sécurisé</li>
+              <li>✓ Performance optimale</li>
+              <li>✓ Sauvegardes automatiques</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-3 fromRight">
+          <div class="tech-card">
+            <h3 class="highlight-accent">Préproduction</h3>
+            <ul>
+              <li>✓ Environnement de staging</li>
+              <li>✓ Tests sans interruption</li>
+              <li>✓ Validation des MAJ</li>
+              <li>✓ Isolation des tests</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-4 fromBottom margin-top-3">
+          <div class="center">
+            <span class="tech-badge">Infrastructure</span>
+            <span class="tech-badge">Automatisation</span>
+            <span class="tech-badge">Monitoring</span>
+            <span class="tech-badge">Sécurité</span>
+            <span class="tech-badge">Sauvegardes</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 5: Architecture -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🏗️ Architecture Globale</h2>
+        
+        <div class="fix-12-12 ae-2 fromBottom">
+          <div class="tech-card center" style="min-height: 300px; display: flex; align-items: center; justify-content: center; background: rgba(21, 27, 61, 0.6); border: 2px dashed var(--primary-color);">
+            <div>
+              <p style="font-size: 2em; color: var(--primary-color);">📊 Schéma d'architecture</p>
+              <p style="font-size: 1em; color: var(--accent-color);">[Insérez votre schéma Diagrams.net ici]</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-3 fromBottom margin-top-2">
+          <div class="grid-50">
+            <div class="tech-card">
+              <strong class="highlight-primary">Frontend</strong>
+              <p>Interface utilisateur Penpot</p>
+            </div>
+            <div class="tech-card">
+              <strong class="highlight-primary">Backend</strong>
+              <p>API & logique métier</p>
+            </div>
+            <div class="tech-card">
+              <strong class="highlight-accent">Base de données</strong>
+              <p>PostgreSQL + Redis</p>
+            </div>
+            <div class="tech-card">
+              <strong class="highlight-accent">Stockage</strong>
+              <p>Assets & fichiers de design</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 6: Approche DevOps -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🔧 Approche DevOps</h2>
+        
+        <div class="fix-6-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">Infrastructure as Code</h3>
+            <p><strong>Terraform</strong> - Provisionnement</p>
+            <ul style="font-size: 0.9em;">
+              <li>Machines virtuelles</li>
+              <li>Volumes de stockage</li>
+              <li>Configuration réseau</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-3 fromRight">
+          <div class="tech-card">
+            <h3 class="highlight-accent">Configuration Management</h3>
+            <p><strong>Ansible</strong> - Automatisation</p>
+            <ul style="font-size: 0.9em;">
+              <li>Reverse proxy (Nginx)</li>
+              <li>Base de données</li>
+              <li>Dépendances système</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-4 fromBottom margin-top-3">
+          <div class="tech-card">
+            <h3 class="highlight-secondary">Conteneurisation & Orchestration</h3>
+            <p><strong>Docker</strong> - Environnements isolés et reproductibles</p>
+            <p style="font-size: 0.95em; color: var(--accent-color);">
+              ✓ Séparation complète staging/production
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 7: CI/CD Pipeline -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🚀 Pipeline CI/CD</h2>
+        
+        <div class="fix-12-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">GitLab CI/CD</h3>
+            <pre style="background: rgba(10, 14, 39, 0.8); padding: 1.5em; border-radius: 8px; overflow-x: auto;"><code style="color: var(--primary-color); font-family: 'JetBrains Mono', monospace; font-size: 0.85em;">stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t penpot:latest .
+    - docker push registry.gitlab.com/...
+
+deploy_production:
+  stage: deploy
+  only:
+    - main
+  script:
+    - ssh deploy@prod "docker pull && docker-compose up -d"</code></pre>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-3 fromLeft margin-top-2">
+          <div class="tech-card">
+            <strong class="highlight-accent">Tests automatisés</strong>
+            <p>Unitaires • E2E • Charge</p>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-4 fromRight margin-top-2">
+          <div class="tech-card">
+            <strong class="highlight-accent">Déploiement continu</strong>
+            <p>Staging auto • Prod sur validation</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 8: Monitoring -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">📊 Monitoring & Alertes</h2>
+        
+        <div class="fix-6-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">Prometheus</h3>
+            <ul>
+              <li>✓ Métriques temps réel</li>
+              <li>✓ CPU, RAM, Disque</li>
+              <li>✓ Performance applicative</li>
+              <li>✓ Santé base de données</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-3 fromRight">
+          <div class="tech-card">
+            <h3 class="highlight-accent">Grafana</h3>
+            <ul>
+              <li>✓ Dashboards visuels</li>
+              <li>✓ Alertes configurables</li>
+              <li>✓ Historique métriques</li>
+              <li>✓ Analyse tendances</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-4 fromBottom margin-top-3">
+          <div class="tech-card" style="background: rgba(0, 217, 255, 0.1); border-color: var(--primary-color);">
+            <p class="center" style="font-size: 1.2em; margin: 0;">
+              <strong>Objectif :</strong> Détecter et résoudre les problèmes avant qu'ils n'impactent les utilisateurs
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 9: Sécurité -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🔒 Stratégie de Sécurité</h2>
+        
+        <div class="fix-4-12 ae-2 fromLeft">
+          <div class="tech-card center">
+            <h4>SSH Sécurisé</h4>
+            <p>Authentification par clé</p>
+            <p>Bastion optionnel</p>
+          </div>
+        </div>
+
+        <div class="fix-4-12 ae-3">
+          <div class="tech-card center">
+            <h4>Pare-feu</h4>
+            <p>Cloud Provider</p>
+            <p>UFW/iptables</p>
+          </div>
+        </div>
+
+        <div class="fix-4-12 ae-4 fromRight">
+          <div class="tech-card center">
+            <h4>HTTPS/TLS</h4>
+            <p>Let's Encrypt</p>
+            <p>Certificats auto-renouvelés</p>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-5 fromBottom margin-top-3">
+          <div class="tech-card">
+            <h3 class="highlight-secondary center">Sauvegardes Automatiques</h3>
+            <div class="grid-50 margin-top-2">
+              <div class="center">
+                <p><strong class="highlight-primary">PostgreSQL</strong></p>
+                <p>Dumps quotidiens chiffrés</p>
+              </div>
+              <div class="center">
+                <p><strong class="highlight-accent">Assets</strong></p>
+                <p>Synchronisation cloud</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 10: Stack Tech -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🛠️ Stack Technologique</h2>
+        
+        <div class="fix-6-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">Infrastructure</h3>
+            <p><span class="tech-badge">Terraform</span></p>
+            <p><span class="tech-badge">Ansible</span></p>
+            <p><span class="tech-badge">Docker</span></p>
+          </div>
+          <div class="tech-card margin-top-2">
+            <h3 class="highlight-accent">CI/CD</h3>
+            <p><span class="tech-badge">GitLab</span></p>
+            <p><span class="tech-badge">GitLab CI/CD</span></p>
+            <p><span class="tech-badge">Container Registry</span></p>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-3 fromRight">
+          <div class="tech-card">
+            <h3 class="highlight-secondary">Monitoring</h3>
+            <p><span class="tech-badge">Prometheus</span></p>
+            <p><span class="tech-badge">Grafana</span></p>
+            <p><span class="tech-badge">Alertmanager</span></p>
+          </div>
+          <div class="tech-card margin-top-2">
+            <h3 class="highlight-accent">Sécurité</h3>
+            <p><span class="tech-badge">Let's Encrypt</span></p>
+            <p><span class="tech-badge">UFW</span></p>
+            <p><span class="tech-badge">SSH Hardening</span></p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 11: Checklist 1/2 -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">✅ Réalisation du Projet (1/2)</h2>
+        
+        <div class="fix-12-12 ae-2 fromLeft" style="font-size: 0.85em;">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>Catégorie</th>
+                <th>Tâche</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Projet</strong></td>
+                <td>Schéma architecture + Ticketing (Jira) + GitLab</td>
+                <td class="highlight-primary">7/7</td>
+              </tr>
+              <tr>
+                <td><strong>Conteneurisation</strong></td>
+                <td>Docker + Registry GitLab + CI/CD</td>
+                <td class="highlight-primary">4/4</td>
+              </tr>
+              <tr>
+                <td><strong>Environnements</strong></td>
+                <td>Prod (Instance ECS) + Staging + Base auto-sauvegardée</td>
+                <td class="highlight-primary">13/13</td>
+              </tr>
+              <tr>
+                <td><strong>Provisionnement</strong></td>
+                <td>Terraform avancé + Ansible avancé</td>
+                <td class="highlight-primary">5/5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 12: Checklist 2/2 -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">✅ Réalisation du Projet (2/2)</h2>
+        
+        <div class="fix-12-12 ae-2 fromLeft" style="font-size: 0.85em;">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>Catégorie</th>
+                <th>Tâche</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Domaines</strong></td>
+                <td>Frontend & Backend avec HTTPS</td>
+                <td class="highlight-primary">4/4</td>
+              </tr>
+              <tr>
+                <td><strong>Tests</strong></td>
+                <td>Unitaires + SonarQube + E2E + Charge</td>
+                <td class="highlight-primary">5/5</td>
+              </tr>
+              <tr>
+                <td><strong>Sécurité</strong></td>
+                <td>Bastion + Terraform firewall + Ansible hardening</td>
+                <td class="highlight-primary">6/6</td>
+              </tr>
+              <tr>
+                <td><strong>Monitoring</strong></td>
+                <td>Prometheus + Grafana (App + DB)</td>
+                <td class="highlight-primary">4/4</td>
+              </tr>
+              <tr class="score-total">
+                <td colspan="2"><strong>TOTAL</strong></td>
+                <td><strong style="color: var(--accent-color); font-size: 1.3em;">48/48 🎉</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 13: Résultats -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">📈 Résultats & Métriques</h2>
+        
+        <div class="fix-4-12 ae-2 fromLeft">
+          <div class="tech-card center">
+            <h3 style="font-size: 3.5em; color: var(--primary-color); margin: 0;">99.9%</h3>
+            <p style="font-size: 1.2em; margin-top: 0.5em;">Uptime</p>
+          </div>
+        </div>
+
+        <div class="fix-4-12 ae-3">
+          <div class="tech-card center">
+            <h3 style="font-size: 3.5em; color: var(--accent-color); margin: 0;">< 2s</h3>
+            <p style="font-size: 1.2em; margin-top: 0.5em;">Temps de chargement</p>
+          </div>
+        </div>
+
+        <div class="fix-4-12 ae-4 fromRight">
+          <div class="tech-card center">
+            <h3 style="font-size: 3.5em; color: var(--secondary-color); margin: 0;">10 min</h3>
+            <p style="font-size: 1.2em; margin-top: 0.5em;">Temps de déploiement</p>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-5 fromBottom margin-top-3">
+          <div class="tech-card" style="background: rgba(255, 190, 11, 0.1); border-color: var(--accent-color);">
+            <ul style="list-style: none; padding: 0;">
+              <li>✓ Zéro interruption de service depuis la mise en production</li>
+              <li>✓ Sauvegardes automatiques quotidiennes testées</li>
+              <li>✓ Alertes configurées sur tous les points critiques</li>
+              <li>✓ Documentation complète pour la maintenance</li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 14: Évolutions Futures -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🚀 Évolutions Futures</h2>
+        
+        <div class="fix-6-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">Court terme</h3>
+            <ul>
+              <li>✓ Kubernetes (orchestration avancée)</li>
+              <li>✓ CDN pour les assets</li>
+              <li>✓ Backup incrémental</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-6-12 ae-3 fromRight">
+          <div class="tech-card">
+            <h3 class="highlight-accent">Moyen terme</h3>
+            <ul>
+              <li>✓ Multi-région (HA)</li>
+              <li>✓ Auto-scaling</li>
+              <li>✓ Service Mesh</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-4 fromBottom margin-top-3">
+          <div class="tech-card">
+            <h3 class="highlight-secondary">Long terme</h3>
+            <p>Migration vers architecture serverless pour optimiser les coûts variables</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 15: Conclusion -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <h2 class="ae-1 margin-bottom-3" style="color: var(--primary-color);">🎓 Conclusion</h2>
+        
+        <div class="fix-12-12 ae-2 fromLeft">
+          <div class="tech-card">
+            <h3 class="highlight-primary">Objectifs Atteints</h3>
+            <ul style="font-size: 1.1em;">
+              <li>✓ Infrastructure complète et automatisée</li>
+              <li>✓ Environnements staging/production séparés</li>
+              <li>✓ Pipeline CI/CD fonctionnel</li>
+              <li>✓ Monitoring et alertes opérationnels</li>
+              <li>✓ Sécurité et sauvegardes garanties</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fix-12-12 ae-3 fromBottom margin-top-3">
+          <div class="tech-card" style="background: rgba(0, 217, 255, 0.1); border-color: var(--primary-color);">
+            <p class="center" style="font-size: 1.3em; margin: 0; line-height: 1.6;">
+              <strong>Funky Wombat Studio</strong> dispose maintenant d'une plateforme de design 
+              <span class="highlight-primary">souveraine</span>, 
+              <span class="highlight-accent">performante</span> et 
+              <span class="highlight-secondary">résiliente</span>
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 100%);"></div>
+</section>
+
+<!-- SLIDE 16: Questions -->
+<section class="slide fade-6 kenBurns">
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        
+        <div class="fix-12-12 toCenter">
+          <h1 class="ae-1 fromBottom" style="font-size: 6em; margin-bottom: 0;">❓</h1>
+          <h2 class="ae-2 fromBottom" style="font-size: 3em; margin-top: 0.5em;">Questions ?</h2>
+          
+          <div class="ae-3 fromBottom margin-top-3">
+            <span class="tech-badge">GitHub</span>
+            <span class="tech-badge">Documentation</span>
+            <span class="tech-badge">Démo Live</span>
+          </div>
+
+          <p class="ae-4 fromBottom" style="margin-top: 3em; font-size: 1.5em; color: var(--accent-color);">
+            Merci de votre attention ! 🚀
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="background" style="background: linear-gradient(135deg, #0a0e27 0%, #1e2761 100%);"></div>
+</section>
+
+<!-- Panel Bottom -->
+<nav class="panel bottom forceMobileView">
+  <div class="sections desktop">
+    <div class="left"><span class="opacity-8">Projet DevOps - Funky Wombat Studio</span></div>
+    <div class="center"><span class="nextSlide"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down"></use></svg></span></div>
+    <div class="right"><span data-dropdown-id="2" class="button actionButton dropdownTrigger"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#share"></use></svg></span></div>
+  </div>
+  <div class="sections compact hidden">
+    <div class="right">
+      <span data-dropdown-id="2" class="button actionButton dropdownTrigger"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#share"></use></svg></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Share Window -->
+<div class="dropdown share bottom right" data-dropdown-id="2">
+  <div class="center padding-2">
+    <div class="title">Partager</div>
+  </div>
+  <ul>
+    <li class="social-facebook"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></li>
+    <li class="social-twitter"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></li>
+    <li class="social-linkedin"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#linkedin"></use></svg></li>
+  </ul>
+</div>
+
+<!-- Loading Progress Bar -->
+<div class="progress-bar blue"></div>
+
+</body>
+</html>
